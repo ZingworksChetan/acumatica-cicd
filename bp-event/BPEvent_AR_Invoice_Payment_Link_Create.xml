@@ -1,0 +1,73 @@
+<BpEvent>
+  <data-set>
+    <relations format-version="3" relations-version="20230530" main-table="BPEvent">
+      <link from="BPEventSubscriber (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTriggerCondition (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTrackingField (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventSchedule (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPInquiryParameter (EventID)" to="BPEvent (EventID)"/>
+      <link from="FilterHeader (FilterID)" to="BPEvent (FilterID)"/>
+      <link from="AUSchedule (ScheduleID)" to="BPEventSchedule (ScheduleID)"/>
+      <link from="Notification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="SYMapping (MappingID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="MobileNotification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="TaskTemplate (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="ActionExecution (ExecutionID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="AUScheduleFilter (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="AUScheduleFill (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="NotificationReport (NotificationID)" to="Notification (NotificationID)"/>
+      <link from="NotificationReportParameter (ReportID)" to="NotificationReport (ReportID)"/>
+      <link from="TaskTemplateSetting (TaskTemplateID)" to="TaskTemplate (TaskTemplateID)"/>
+      <link from="ActionExecutionMapping (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="ActionExecutionParameter (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt"/>
+    </relations>
+    <layout>
+      <table name="BPEvent">
+        <table name="BPEventSubscriber" uplink="(EventID) = (EventID)">
+          <table name="Notification" uplink="(HandlerID) = (NoteID)">
+            <table name="NotificationReport" uplink="(NotificationID) = (NotificationID)">
+              <table name="NotificationReportParameter" uplink="(ReportID) = (ReportID)"/>
+            </table>
+          </table>
+          <table name="SYMapping" uplink="(HandlerID) = (MappingID)"/>
+          <table name="MobileNotification" uplink="(HandlerID) = (NoteID)"/>
+          <table name="TaskTemplate" uplink="(HandlerID) = (NoteID)">
+            <table name="TaskTemplateSetting" uplink="(TaskTemplateID) = (TaskTemplateID)"/>
+          </table>
+          <table name="ActionExecution" uplink="(HandlerID) = (ExecutionID)">
+            <table name="ActionExecutionMapping" uplink="(ExecutionID) = (ExecutionID)"/>
+            <table name="ActionExecutionParameter" uplink="(ExecutionID) = (ExecutionID)"/>
+          </table>
+        </table>
+        <table name="BPEventTriggerCondition" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventTrackingField" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventSchedule" uplink="(EventID) = (EventID)">
+          <table name="AUSchedule" uplink="(ScheduleID) = (ScheduleID)">
+            <table name="AUScheduleFilter" uplink="(ScheduleID) = (ScheduleID)"/>
+            <table name="AUScheduleFill" uplink="(ScheduleID) = (ScheduleID)"/>
+          </table>
+        </table>
+        <table name="BPInquiryParameter" uplink="(EventID) = (EventID)"/>
+        <table name="FilterHeader" uplink="(FilterID) = (FilterID)">
+          <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+        </table>
+      </table>
+    </layout>
+    <data>
+      <BPEvent>
+        <row EventID="bc3d4ac9-a880-4fa7-a605-8c425f0957e9" Name="AR Invoice Payment Link Create" ScreenID="AR0016DB" ViewName="Results" ShowMassAction="1" Active="1" Type="0" RowProcessingType="1" IsGroupByNew="1" NoteID="67963f1a-8a9d-ed11-a0db-74dfbf820c22" TrackAllFields="0">
+          <BPEventSubscriber HandlerID="c37b059e-456c-402f-a3b3-12710d5f80e6" Active="1" OrderNbr="32" Type="ACEX" StopOnError="0" IsProcessSingleLine="0">
+            <ActionExecution Name="Invoice Payment Link Create" ScreenID="AR0016DB" ActionScreenID="AR301000" ActionName="CreateLink" MappingCntr="2" ParameterCntr="0" NoteID="8c9c9e00-b6a3-ed11-a0e0-74dfbf820c22">
+              <ActionExecutionMapping LineNbr="2" FieldName="RefNbr" FromSchema="0" Value="ARInvoice_refNbr" DataType="18"/>
+              <ActionExecutionMapping LineNbr="1" FieldName="DocType" FromSchema="0" Value="ARInvoice_docType" DataType="18"/>
+            </ActionExecution>
+          </BPEventSubscriber>
+          <BPEventTriggerCondition OrderNbr="96" TableName="SOInvoice" Operation="5" Active="1" OpenBrackets="0" FieldName="docType" Condition="11" IsFromSchema="1" CloseBrackets="0" Operator="1" DataType="18"/>
+          <BPEventTriggerCondition OrderNbr="64" TableName="ARInvoice" Operation="4" Active="1" OpenBrackets="0" FieldName="status" Condition="0" IsFromSchema="1" Value="N" CloseBrackets="0" Operator="0" DataType="18"/>
+          <BPEventTriggerCondition OrderNbr="32" TableName="ARInvoice" Operation="5" Active="1" OpenBrackets="0" FieldName="processingCenterID" Condition="12" IsFromSchema="1" CloseBrackets="0" Operator="0" DataType="18"/>
+        </row>
+      </BPEvent>
+    </data>
+  </data-set>
+</BpEvent>

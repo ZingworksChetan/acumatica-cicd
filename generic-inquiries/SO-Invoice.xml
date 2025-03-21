@@ -1,0 +1,336 @@
+<GenericInquiryScreen>
+        <data-set>
+            <relations format-version="3" relations-version="20240201" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+                <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+                <link from="GINavigationCondition (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+                <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
+                <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+                <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
+                <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
+                <link from="GISort (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GITable (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIWhere (DesignID)" to="GIDesign (DesignID)" />
+                <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id" />
+                <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx" />
+                <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
+                <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
+                <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
+                <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
+                <link from="PivotTable (NoteID)" to="FilterHeader (RefNoteID)" />
+                <link from="PivotField (ScreenID, PivotTableID)" to="PivotTable (ScreenID, PivotTableID)" />
+                <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+                <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+                <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+                <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+                <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+                <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+                <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+                <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+                <link from="GIDesign (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIFilter (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIFilter (NoteID)" to="GIFilterKvExt (RecordID)" type="RowKvExt" />
+                <link from="GIGroupBy (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIOn (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIRelation (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIResult (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIResult (NoteID)" to="GIResultKvExt (RecordID)" type="RowKvExt" />
+                <link from="GISort (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GITable (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
+            </relations>
+            <layout>
+                <table name="GIDesign">
+                    <table name="GIFilter" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="GIFilterKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="GIGroupBy" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GIMassAction" uplink="(DesignID) = (DesignID)" />
+                    <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)" />
+                    <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
+                        <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                        <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                    </table>
+                    <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                    <table name="GISort" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GITable" uplink="(DesignID) = (DesignID)">
+                        <table name="GIRelation" uplink="(DesignID, Alias) = (DesignID, ParentTable)">
+                            <table name="GIOn" uplink="(DesignID, LineNbr) = (DesignID, RelationNbr)">
+                                <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        </table>
+                        <table name="GIResult" uplink="(Alias, DesignID) = (ObjectName, DesignID)">
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="GIResultKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GIWhere" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignById">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(PrimaryScreenIDNew) = (ScreenID)" linkname="to1Screen">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="MUIWorkspace">
+                    <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+                </table>
+                <table name="MUISubcategory" />
+                <table name="MUIArea" />
+            </layout>
+            <data>
+                <GIDesign>
+                    <row DesignID="4cbb527b-bcfa-455b-90e0-086604663374" Name="SO-Invoice" FilterColCount="3" PageSize="0" PrimaryScreenIDNew="SO303000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0">
+                        <GINavigationScreen Link="AR3010DB" LineNbr="100007" SortOrder="700" WindowMode="L" IsActive="1" Icon="attach_money" NoteID="d9cf07c1-f822-4417-b54e-59dc16ce0653">
+                            <GINavigationParameter LineNbr="100001" FieldName="CustomerAccountID" ParameterName="Customer.acctCD" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="SO643000" LineNbr="100006" SortOrder="600" WindowMode="L" IsActive="1" Icon="picture_as_pdf" CustomTitle="Printed Form" NoteID="1052160d-632f-436f-b0a4-34be3eb62f5e">
+                            <GINavigationParameter LineNbr="100002" FieldName="RefNbr" ParameterName="SOInvoice.refNbr" IsExpression="0" />
+                            <GINavigationParameter LineNbr="100001" FieldName="DocType" ParameterName="SOInvoice.docType" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="SO3012SP" LineNbr="100005" SortOrder="500" WindowMode="L" IsActive="1" Icon="shopping_cart" CustomTitle="Sales Orders" NoteID="87bfe03a-45f9-4b42-b877-a2106d7493d4">
+                            <GINavigationParameter LineNbr="100002" FieldName="ARTran_refNbr" ParameterName="ARInvoice.refNbr" IsExpression="0" />
+                            <GINavigationParameter LineNbr="100001" FieldName="ARTran_TranType" ParameterName="ARInvoice.docType" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="AR303000" LineNbr="100004" SortOrder="400" WindowMode="L" IsActive="1" Icon="person_outline" NoteID="16417615-55f5-4eaa-9f45-bf5e04831cb9">
+                            <GINavigationParameter LineNbr="100001" FieldName="AcctCD" ParameterName="Customer.acctCD" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="SO303000" LineNbr="100003" SortOrder="300" WindowMode="L" IsActive="1" Icon="visibility" NoteID="2317ebc6-c977-4146-9b57-733abbf3357a">
+                            <GINavigationParameter LineNbr="100002" FieldName="RefNbr" ParameterName="SOInvoice.refNbr" IsExpression="0" />
+                            <GINavigationParameter LineNbr="100001" FieldName="DocType" ParameterName="SOInvoice.docType" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="SO303000" LineNbr="100002" SortOrder="200" WindowMode="S" IsActive="1" NoteID="268964c5-35ff-4f87-a3c7-e88f5083ab3f">
+                            <GINavigationParameter LineNbr="100002" FieldName="RefNbr" ParameterName="Correction.refNbr" IsExpression="0" />
+                            <GINavigationParameter LineNbr="100001" FieldName="DocType" ParameterName="Correction.docType" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GINavigationScreen Link="SO303000" LineNbr="1" SortOrder="100" WindowMode="I" IsActive="1" NoteID="87c7e1b1-642d-43d6-86d1-5c62cdce3225">
+                            <GINavigationParameter LineNbr="2" FieldName="RefNbr" ParameterName="SOInvoice.refNbr" IsExpression="0" />
+                            <GINavigationParameter LineNbr="1" FieldName="DocType" ParameterName="SOInvoice.docType" IsExpression="0" />
+                        </GINavigationScreen>
+                        <GISort LineNbr="1" IsActive="1" DataFieldName="ARInvoice.createdDateTime" SortOrder="D" />
+                        <GITable Alias="SOInvoice" Name="PX.Objects.SO.SOInvoice" Type="0">
+                            <GIRelation LineNbr="3" ChildTable="Customer" IsActive="1" JoinType="L">
+                                <GIOn LineNbr="4" ParentField="customerID" Condition="E" ChildField="bAccountID" Operation="A" />
+                            </GIRelation>
+                            <GIRelation LineNbr="2" ChildTable="BAccountR" IsActive="1" JoinType="L">
+                                <GIOn LineNbr="3" ParentField="customerID" Condition="E" ChildField="bAccountID" Operation="A" />
+                            </GIRelation>
+                            <GIRelation LineNbr="1" ChildTable="ARInvoice" IsActive="1" JoinType="I">
+                                <GIOn LineNbr="2" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A" />
+                                <GIOn LineNbr="1" ParentField="docType" Condition="E" ChildField="docType" Operation="A" />
+                            </GIRelation>
+                            <GIResult LineNbr="8" SortOrder="8" IsActive="1" Field="docDesc" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e54d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="customerID_description" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e44d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="6" SortOrder="6" IsActive="1" Field="customerID" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="e34d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="docDate" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="e24d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="e64d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="e14d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="docType" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="e04d7458-b27e-e711-82a5-6c0b84b36be4" />
+                        </GITable>
+                        <GITable Alias="Customer" Name="PX.Objects.AR.Customer" Type="0" />
+                        <GITable Alias="Correction" Name="PX.Objects.AR.ARInvoice" Type="0">
+                            <GIResult LineNbr="22" SortOrder="22" IsActive="1" Field="refNbr" Caption="Correction Invoice" IsVisible="0" DefaultNav="0" NavigationNbr="100002" QuickFilter="0" FastFilter="0" RowID="cb724dce-beb4-4628-ada6-143027948de8" />
+                        </GITable>
+                        <GITable Alias="Branch" Name="PX.Objects.GL.Branch" Type="0" />
+                        <GITable Alias="BAccountR" Name="PX.Objects.CR.BAccount" Type="0" />
+                        <GITable Alias="ARInvoice" Name="PX.Objects.AR.ARInvoice" Type="0">
+                            <GIRelation LineNbr="5" ChildTable="Correction" IsActive="1" JoinType="L">
+                                <GIOn LineNbr="9" ParentField="Correction.IsCorrection" Condition="E" ChildField="=true" Operation="A" />
+                                <GIOn LineNbr="8" ParentField="refNbr" Condition="E" ChildField="origRefNbr" Operation="A" />
+                                <GIOn LineNbr="7" ParentField="docType" Condition="E" ChildField="origDocType" Operation="A" />
+                                <GIOn LineNbr="6" ParentField="isUnderCorrection" Condition="E" ChildField="=true" Operation="A" />
+                            </GIRelation>
+                            <GIRelation LineNbr="4" ChildTable="Branch" IsActive="1" JoinType="L">
+                                <GIOn LineNbr="5" ParentField="branchID" Condition="E" ChildField="branchID" Operation="A" />
+                            </GIRelation>
+                            <GIResult LineNbr="21" SortOrder="21" IsActive="1" Field="lastModifiedDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="df4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="lastModifiedByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="de4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="19" SortOrder="19" IsActive="1" Field="createdDateTime" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="dd4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="createdByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="dc4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="branchID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="db4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="branchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="da4d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="batchNbr" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="d94d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="curyID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d84d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="curyOrigDiscAmt" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d74d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="12" SortOrder="12" IsActive="1" Field="curyTaxTotal" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d64d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="curyDocBal" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d54d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="10" SortOrder="10" IsActive="1" Field="curyOrigDocAmt" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d44d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="9" SortOrder="9" IsActive="1" Field="invoiceNbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d34d7458-b27e-e711-82a5-6c0b84b36be4" />
+                            <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="finPeriodID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d24d7458-b27e-e711-82a5-6c0b84b36be4" />
+                        </GITable>
+                        <GIWhere LineNbr="1" IsActive="1" DataFieldName="ARInvoice.origModule" Condition="E" IsExpression="0" Value1="SO" Operation="A" />
+                        <SiteMap linkname="toDesignById">
+                            <row Title="Invoices" Url="~/genericinquiry/genericinquiry.aspx?id=4cbb527b-bcfa-455b-90e0-086604663374" ScreenID="SO3030PL" NodeID="73ab5c0e-d35e-4b50-85de-9a9168a2650d" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                                <ListEntryPoint EntryScreenID="SO303000" IsActive="1" />
+                                <FilterHeader FilterID="78631b88-9bf5-ef11-b2be-7c70db050b12" UserName="admin" ViewName="Results" FilterName="NON BALANCED INVOICES" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="1" DataField="SOInvoice_status" Condition="1" ValueSt="B" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="0" />
+                                </FilterHeader>
+                                <FilterHeader FilterID="52967697-1fac-ef11-b61e-6045bdecc18e" UserName="unitedsiteservices.com\Paul.Field" ViewName="Results" FilterName="Not Open" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                                    <FilterRow FilterRowNbr="20" OpenBrackets="0" DataField="SOInvoice_customerID" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="19" OpenBrackets="0" DataField="SOInvoice_docDate" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="18" OpenBrackets="0" DataField="SOInvoice_status" Condition="11" ValueSt="" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="17" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="U" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="16" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Y" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="15" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="L" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="14" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="J" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="13" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="D" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="12" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Z" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="11" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="E" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="10" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="P" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="9" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="C" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="8" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="S" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="7" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="V" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="6" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="B" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="5" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="H" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="W" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="R" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="2" OpenBrackets="1" DataField="SOInvoice_status" Condition="0" ValueSt="I" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="SOInvoice_docType" Condition="0" ValueSt="" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                </FilterHeader>
+                                <MUIScreen IsPortal="0" WorkspaceID="594d3aae-a18e-4e8f-ae9a-dd4ffcdb5240" Order="367.5" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6" />
+                            </row>
+                            <row Position="31" Title="Invoices" Url="~/genericinquiry/genericinquiry.aspx?id=4cbb527b-bcfa-455b-90e0-086604663374" ScreenID="SO3030PL" NodeID="0c293c77-170d-4ab7-8cea-53d3a05d695d" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519" SelectedUI="E">
+                                <ListEntryPoint EntryScreenID="SO303000" IsActive="1" />
+                                <FilterHeader FilterID="78631b88-9bf5-ef11-b2be-7c70db050b12" UserName="admin" ViewName="Results" FilterName="NON BALANCED INVOICES" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="1" DataField="SOInvoice_status" Condition="1" ValueSt="B" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="0" />
+                                </FilterHeader>
+                                <FilterHeader FilterID="52967697-1fac-ef11-b61e-6045bdecc18e" UserName="unitedsiteservices.com\Paul.Field" ViewName="Results" FilterName="Not Open" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                                    <FilterRow FilterRowNbr="20" OpenBrackets="0" DataField="SOInvoice_customerID" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="19" OpenBrackets="0" DataField="SOInvoice_docDate" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="18" OpenBrackets="0" DataField="SOInvoice_status" Condition="11" ValueSt="" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="17" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="U" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="16" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Y" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="15" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="L" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="14" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="J" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="13" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="D" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="12" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Z" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="11" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="E" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="10" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="P" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="9" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="C" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="8" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="S" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="7" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="V" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="6" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="B" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="5" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="H" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="W" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="R" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="2" OpenBrackets="1" DataField="SOInvoice_status" Condition="0" ValueSt="I" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="SOInvoice_docType" Condition="0" ValueSt="" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                </FilterHeader>
+                                <MUIScreen IsPortal="0" WorkspaceID="594d3aae-a18e-4e8f-ae9a-dd4ffcdb5240" Order="377.5" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6" />
+                            </row>
+                            <row Title="Invoices" Url="~/genericinquiry/genericinquiry.aspx?id=4cbb527b-bcfa-455b-90e0-086604663374" ScreenID="SO3030PL" NodeID="51bee0ab-5e5e-4492-bb7f-191fb75a0b53" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                                <ListEntryPoint EntryScreenID="SO303000" IsActive="1" />
+                                <FilterHeader FilterID="78631b88-9bf5-ef11-b2be-7c70db050b12" UserName="admin" ViewName="Results" FilterName="NON BALANCED INVOICES" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="1" DataField="SOInvoice_status" Condition="1" ValueSt="B" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="0" />
+                                </FilterHeader>
+                                <FilterHeader FilterID="52967697-1fac-ef11-b61e-6045bdecc18e" UserName="unitedsiteservices.com\Paul.Field" ViewName="Results" FilterName="Not Open" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                                    <FilterRow FilterRowNbr="20" OpenBrackets="0" DataField="SOInvoice_customerID" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="19" OpenBrackets="0" DataField="SOInvoice_docDate" Condition="0" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                    <FilterRow FilterRowNbr="18" OpenBrackets="0" DataField="SOInvoice_status" Condition="11" ValueSt="" ValueSt2="" CloseBrackets="1" Operator="0" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="17" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="U" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="16" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Y" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="15" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="L" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="14" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="J" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="13" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="D" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="12" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="Z" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="11" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="E" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="10" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="P" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="9" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="C" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="8" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="S" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="7" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="V" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="6" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="B" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="5" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="H" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="W" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="SOInvoice_status" Condition="0" ValueSt="R" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="2" OpenBrackets="1" DataField="SOInvoice_status" Condition="0" ValueSt="I" ValueSt2="" CloseBrackets="0" Operator="1" IsUsed="1" FilterType="1" />
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="SOInvoice_docType" Condition="0" ValueSt="" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="0" FilterType="1" />
+                                </FilterHeader>
+                                <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="10" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6">
+                                    <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                                </MUIScreen>
+                            </row>
+                        </SiteMap>
+                        <SiteMap linkname="to1Screen">
+                            <row Position="30" Title="Invoices" Url="~/Pages/SO/SO303000.aspx" NodeID="f14429bc-e018-4620-988c-34ada94ea0db" ParentID="30cef218-7297-4e6b-8a42-7d135356f3c3" SelectedUI="E">
+                                <FilterHeader FilterID="ba771eaf-6c86-eb11-9447-001c42659804" UserName="admin" ViewName="Transactions" FilterName="Sale and Rental Items" IsDefault="1" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="UsrNVRTLineType" Condition="1" ValueSt="2" ValueSt2="2" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                                </FilterHeader>
+                                <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="30" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6">
+                                    <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                                </MUIScreen>
+                            </row>
+                        </SiteMap>
+                    </row>
+                </GIDesign>
+                <MUIWorkspace>
+                    <row IsPortal="0" WorkspaceID="594d3aae-a18e-4e8f-ae9a-dd4ffcdb5240" Order="136" Title="Rental Management" Icon="local_shipping" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" IsSystem="0" />
+                    <row IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="92.5" Title="Sales Orders" Icon="pen_frame" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSOM0000" IsSystem="0">
+                        <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                    </row>
+                </MUIWorkspace>
+                <MUISubcategory>
+                    <row IsPortal="0" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6" Order="64" Name="Transactions" Icon="" IsSystem="0" />
+                </MUISubcategory>
+                <MUIArea>
+                    <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
+                </MUIArea>
+            </data>
+        </data-set>
+    </GenericInquiryScreen>

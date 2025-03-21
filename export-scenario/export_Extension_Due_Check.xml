@@ -1,0 +1,81 @@
+<XportScenario>
+  <data-set>
+    <relations format-version="3" relations-version="20160101" main-table="SYMapping" file-name="(ScreenID)-(Name)">
+      <link from="SYMapping (ProviderID, NoteID)" to="SYProvider (ProviderID, NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYMapping (NoteID)" to="Note (NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYProvider (NoteID)" to="Note (NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYProviderField (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderField (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYProviderObject (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderObject (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYProviderParameter (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderParameter (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYMappingCondition (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYMappingCondition (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYMappingField (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYMappingField (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYImportCondition (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYImportCondition (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="NoteDoc (NoteID)" to="SYProvider (NoteID)"/>
+      <link from="UploadFile (FileID)" to="NoteDoc (FileID)"/>
+      <link from="UploadFile (FileID, LastRevisionID)" to="UploadFileRevision (FileID, FileRevisionID)" type="LastRevision"/>
+    </relations>
+    <layout>
+      <table name="SYMapping">
+        <table name="SYMappingCondition" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYMappingField" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYImportCondition" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+      </table>
+      <table name="SYProvider">
+        <table name="SYProviderField" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYProviderObject" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYProviderParameter" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="NoteDoc" uplink="(NoteID) = (NoteID)">
+          <table name="UploadFile" uplink="(FileID) = (FileID)">
+            <table name="UploadFileRevision" uplink="(FileID, LastRevisionID) = (FileID, FileRevisionID)"/>
+          </table>
+        </table>
+      </table>
+      <table name="Note"/>
+    </layout>
+    <data>
+      <SYMapping>
+        <row MappingID="8550729b-badf-4680-ba75-2ad74c58fbf3" Name="Extension Due Check" IsActive="1" ScreenID="SO301000" MappingType="I" GraphName="PX.Objects.SO.SOOrderEntry" ViewName="Document" GridViewName="Transactions" ProviderID="b78a325c-56c1-4da1-b54a-542219eb30ec" ProviderObject="Results" SyncType="F" Status="N" FieldCntr="796" FieldOrderCntr="0" ImportConditionCntr="0" ConditionCntr="0" DataCntr="0" NbrRecords="0" DiscardResult="0" NoteID="ccc2cb35-6dd9-ef11-b8af-201e88fdc51d" IsExportOnlyMappingFields="0" RepeatingData="0" ProcessInParallel="0" BreakOnError="1" BreakOnTarget="1" SkipHeaders="0">
+          <SYMappingField LineNbr="796" OrderNumber="5" IsActive="1" IsVisible="0" ParentLineNbr="414" ObjectName="Document" FieldName="&lt;Cancel>" NeedCommit="0" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="764" OrderNumber="3" IsActive="1" IsVisible="0" ParentLineNbr="605" ObjectName="Document" FieldName="&lt;Cancel>" NeedCommit="0" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="732" OrderNumber="2" IsActive="1" IsVisible="0" ParentLineNbr="605" ObjectName="Document" FieldName="@@OrderNbr" Value="=[Document.OrderNbr]" NeedCommit="0" IgnoreError="0"/>
+          <SYMappingField LineNbr="700" OrderNumber="1" IsActive="1" IsVisible="0" ParentLineNbr="605" ObjectName="Document" FieldName="@@OrderType" Value="=[Document.OrderType]" NeedCommit="0" IgnoreError="0"/>
+          <SYMappingField LineNbr="605" OrderNumber="4" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="OrderType!OrderType" Value="=[SOOrder_orderType]" NeedCommit="1" IgnoreError="0"/>
+          <SYMappingField LineNbr="414" OrderNumber="6" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="OrderNbr" Value="=[SOOrder_orderNbr]" NeedCommit="1" IgnoreError="0"/>
+          <SYMappingField LineNbr="319" OrderNumber="8" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="&lt;Save>" NeedCommit="0" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="287" OrderNumber="7" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="UsrNAWExtensionDue" Value="=True" NeedCommit="0" IgnoreError="0"/>
+        </row>
+      </SYMapping>
+      <SYProvider>
+        <row ProviderID="b78a325c-56c1-4da1-b54a-542219eb30ec" Name="BusinessEvent_ZW000003" IsActive="1" ProviderType="PX.DataSync.BusinessProcessSYProvider" ObjectCntr="2" ParameterCntr="1" NoteID="ccc2cb35-6dd9-ef11-b8af-201e88fdc51d">
+          <SYProviderField ObjectName="Results" LineNbr="3" IsActive="1" Name="SOOrder_usrNVInvoiceType" DisplayName="SOOrder_usrNVInvoiceType" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="6" IsActive="1" Name="SOOrder_usrNAWExtensionDue" DisplayName="SOOrder_usrNAWExtensionDue" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="4" IsActive="1" Name="SOOrder_usrNAWContractPeriod" DisplayName="SOOrder_usrNAWContractPeriod" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="2" IsActive="1" Name="SOOrder_orderType" DisplayName="SOOrder_orderType" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="1" IsActive="1" Name="SOOrder_orderNbr" DisplayName="SOOrder_orderNbr" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="5" IsActive="1" Name="NVRTCycleLog_cycleEndDate" DisplayName="NVRTCycleLog_cycleEndDate" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderObject LineNbr="2" IsActive="1" Name="PreviousResults" FieldCntr="0" IsCustom="0"/>
+          <SYProviderObject LineNbr="1" IsActive="1" Name="Results" FieldCntr="6" IsCustom="0"/>
+          <SYProviderParameter LineNbr="1" Name="ScreenID" DisplayName="Screen ID" Value="ZW000003" IsEncrypted="0"/>
+        </row>
+      </SYProvider>
+    </data>
+  </data-set>
+</XportScenario>

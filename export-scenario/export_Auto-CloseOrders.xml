@@ -1,0 +1,77 @@
+<XportScenario>
+  <data-set>
+    <relations format-version="3" relations-version="20160101" main-table="SYMapping" file-name="(ScreenID)-(Name)">
+      <link from="SYMapping (ProviderID, NoteID)" to="SYProvider (ProviderID, NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYMapping (NoteID)" to="Note (NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYProvider (NoteID)" to="Note (NoteID)" type="ToMaster" updateable="False"/>
+      <link from="SYProviderField (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderField (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYProviderObject (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderObject (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYProviderParameter (ProviderID)" to="SYProvider (ProviderID)"/>
+      <link from="SYProviderParameter (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYMappingCondition (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYMappingCondition (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYMappingField (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYMappingField (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="SYImportCondition (MappingID)" to="SYMapping (MappingID)"/>
+      <link from="SYImportCondition (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="NoteDoc (NoteID)" to="SYProvider (NoteID)"/>
+      <link from="UploadFile (FileID)" to="NoteDoc (FileID)"/>
+      <link from="UploadFile (FileID, LastRevisionID)" to="UploadFileRevision (FileID, FileRevisionID)" type="LastRevision"/>
+    </relations>
+    <layout>
+      <table name="SYMapping">
+        <table name="SYMappingCondition" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYMappingField" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYImportCondition" uplink="(MappingID) = (MappingID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+      </table>
+      <table name="SYProvider">
+        <table name="SYProviderField" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYProviderObject" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SYProviderParameter" uplink="(ProviderID) = (ProviderID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="NoteDoc" uplink="(NoteID) = (NoteID)">
+          <table name="UploadFile" uplink="(FileID) = (FileID)">
+            <table name="UploadFileRevision" uplink="(FileID, LastRevisionID) = (FileID, FileRevisionID)"/>
+          </table>
+        </table>
+      </table>
+      <table name="Note"/>
+    </layout>
+    <data>
+      <SYMapping>
+        <row MappingID="1b25cb87-eedb-4590-86d2-5aa928666f17" Name="Auto-CloseOrders" IsActive="1" ScreenID="SO301000" MappingType="I" GraphName="PX.Objects.SO.SOOrderEntry" ViewName="Document" GridViewName="Transactions" ProviderID="618d7c7c-4125-495d-872a-242b682e142b" ProviderObject="Results" SyncType="F" Status="N" FieldCntr="224" FieldOrderCntr="0" ImportConditionCntr="0" ConditionCntr="0" DataCntr="0" NbrRecords="0" DiscardResult="0" NoteID="bafc636a-8bda-ef11-b61a-7c1e52183c67" IsExportOnlyMappingFields="0" RepeatingData="0" ProcessInParallel="0" BreakOnError="0" BreakOnTarget="0" SkipHeaders="0">
+          <SYMappingField LineNbr="224" OrderNumber="7" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="&lt;nVRTxCloseRentalContract>" NeedCommit="1" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="192" OrderNumber="5" IsActive="1" IsVisible="0" ParentLineNbr="160" ObjectName="Document" FieldName="&lt;Cancel>" NeedCommit="0" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="160" OrderNumber="6" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="OrderNbr" Value="SOOrder_orderNbr" NeedCommit="1" IgnoreError="0"/>
+          <SYMappingField LineNbr="128" OrderNumber="3" IsActive="1" IsVisible="0" ParentLineNbr="32" ObjectName="Document" FieldName="&lt;Cancel>" NeedCommit="0" IgnoreError="0" ExecuteActionBehavior="E"/>
+          <SYMappingField LineNbr="96" OrderNumber="2" IsActive="1" IsVisible="0" ParentLineNbr="32" ObjectName="Document" FieldName="@@OrderNbr" Value="=[Document.OrderNbr]" NeedCommit="0" IgnoreError="0"/>
+          <SYMappingField LineNbr="64" OrderNumber="1" IsActive="1" IsVisible="0" ParentLineNbr="32" ObjectName="Document" FieldName="@@OrderType" Value="=[Document.OrderType]" NeedCommit="0" IgnoreError="0"/>
+          <SYMappingField LineNbr="32" OrderNumber="4" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="OrderType" Value="SOOrder_orderType" NeedCommit="1" IgnoreError="0"/>
+        </row>
+      </SYMapping>
+      <SYProvider>
+        <row ProviderID="618d7c7c-4125-495d-872a-242b682e142b" Name="BusinessEvent_GI999595" IsActive="1" ProviderType="PX.DataSync.BusinessProcessSYProvider" ObjectCntr="2" ParameterCntr="1" NoteID="bafc636a-8bda-ef11-b61a-7c1e52183c67">
+          <SYProviderField ObjectName="Results" LineNbr="3" IsActive="1" Name="SOOrder_status" DisplayName="SOOrder_status" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="1" IsActive="1" Name="SOOrder_orderType" DisplayName="SOOrder_orderType" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderField ObjectName="Results" LineNbr="2" IsActive="1" Name="SOOrder_orderNbr" DisplayName="SOOrder_orderNbr" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0"/>
+          <SYProviderObject LineNbr="2" IsActive="1" Name="PreviousResults" FieldCntr="0" IsCustom="0"/>
+          <SYProviderObject LineNbr="1" IsActive="1" Name="Results" FieldCntr="3" IsCustom="0"/>
+          <SYProviderParameter LineNbr="1" Name="ScreenID" DisplayName="Screen ID" Value="GI999595" IsEncrypted="0"/>
+        </row>
+      </SYProvider>
+    </data>
+  </data-set>
+</XportScenario>

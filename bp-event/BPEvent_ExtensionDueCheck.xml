@@ -1,0 +1,71 @@
+<BpEvent>
+  <data-set>
+    <relations format-version="3" relations-version="20230530" main-table="BPEvent">
+      <link from="BPEventSubscriber (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTriggerCondition (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTrackingField (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventSchedule (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPInquiryParameter (EventID)" to="BPEvent (EventID)"/>
+      <link from="FilterHeader (FilterID)" to="BPEvent (FilterID)"/>
+      <link from="AUSchedule (ScheduleID)" to="BPEventSchedule (ScheduleID)"/>
+      <link from="Notification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="SYMapping (MappingID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="MobileNotification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="TaskTemplate (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="ActionExecution (ExecutionID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="AUScheduleFilter (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="AUScheduleFill (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="NotificationReport (NotificationID)" to="Notification (NotificationID)"/>
+      <link from="NotificationReportParameter (ReportID)" to="NotificationReport (ReportID)"/>
+      <link from="TaskTemplateSetting (TaskTemplateID)" to="TaskTemplate (TaskTemplateID)"/>
+      <link from="ActionExecutionMapping (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="ActionExecutionParameter (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt"/>
+    </relations>
+    <layout>
+      <table name="BPEvent">
+        <table name="BPEventSubscriber" uplink="(EventID) = (EventID)">
+          <table name="Notification" uplink="(HandlerID) = (NoteID)">
+            <table name="NotificationReport" uplink="(NotificationID) = (NotificationID)">
+              <table name="NotificationReportParameter" uplink="(ReportID) = (ReportID)"/>
+            </table>
+          </table>
+          <table name="SYMapping" uplink="(HandlerID) = (MappingID)"/>
+          <table name="MobileNotification" uplink="(HandlerID) = (NoteID)"/>
+          <table name="TaskTemplate" uplink="(HandlerID) = (NoteID)">
+            <table name="TaskTemplateSetting" uplink="(TaskTemplateID) = (TaskTemplateID)"/>
+          </table>
+          <table name="ActionExecution" uplink="(HandlerID) = (ExecutionID)">
+            <table name="ActionExecutionMapping" uplink="(ExecutionID) = (ExecutionID)"/>
+            <table name="ActionExecutionParameter" uplink="(ExecutionID) = (ExecutionID)"/>
+          </table>
+        </table>
+        <table name="BPEventTriggerCondition" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventTrackingField" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventSchedule" uplink="(EventID) = (EventID)">
+          <table name="AUSchedule" uplink="(ScheduleID) = (ScheduleID)">
+            <table name="AUScheduleFilter" uplink="(ScheduleID) = (ScheduleID)"/>
+            <table name="AUScheduleFill" uplink="(ScheduleID) = (ScheduleID)"/>
+          </table>
+        </table>
+        <table name="BPInquiryParameter" uplink="(EventID) = (EventID)"/>
+        <table name="FilterHeader" uplink="(FilterID) = (FilterID)">
+          <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+        </table>
+      </table>
+    </layout>
+    <data>
+      <BPEvent>
+        <row EventID="7f5d8602-f28b-4168-a53f-163b99c14e73" Name="ExtensionDueCheck" Description="ExtensionDueCheck" ScreenID="ZW000003" ViewName="Results" ShowMassAction="0" Active="1" Type="1" RowProcessingType="1" IsGroupByNew="1" NoteID="783715ad-dcd8-ef11-b8af-201e88fdc51d" TrackAllFields="0">
+          <BPEventSubscriber HandlerID="8550729b-badf-4680-ba75-2ad74c58fbf3" Active="1" OrderNbr="64" Type="IMPT" StopOnError="0" IsProcessSingleLine="0">
+            <SYMapping Name="Extension Due Check" IsActive="1" ScreenID="SO301000" MappingType="I" GraphName="PX.Objects.SO.SOOrderEntry" ViewName="Document" GridViewName="Transactions" ProviderID="b78a325c-56c1-4da1-b54a-542219eb30ec" ProviderObject="Results" SyncType="F" Status="N" FieldCntr="796" FieldOrderCntr="0" ImportConditionCntr="0" ConditionCntr="0" DataCntr="0" NbrRecords="0" DiscardResult="0" NoteID="ccc2cb35-6dd9-ef11-b8af-201e88fdc51d" IsExportOnlyMappingFields="0" RepeatingData="0" ProcessInParallel="0" BreakOnError="1" BreakOnTarget="1" SkipHeaders="0"/>
+          </BPEventSubscriber>
+          <BPEventTriggerCondition OrderNbr="32" TableName="NVRTCycleLog" Operation="4" Active="1" OpenBrackets="0" FieldName="cycleEndDate" Condition="0" IsFromSchema="1" Value="@Today+21" CloseBrackets="0" Operator="1" DataType="16"/>
+          <BPEventSchedule ScheduleID="1793" Active="1">
+            <AUSchedule ScreenID="ZW000003" Description="USS_ExtensionDueCheck Schedule" GraphName="PX.Data.PXGenericInqGrph" ViewName="Results" FilterName="Filter" TableName="PX.Data.GenericResult" FilterCntr="0" FillCntr="0" IsActive="0" ActionName="RaiseEvent" TimeZoneID="GMTM0500G" ScheduleType="D" DailyFrequency="1" WeeklyFrequency="1" WeeklyOnDay1="1" WeeklyOnDay2="0" WeeklyOnDay3="0" WeeklyOnDay4="0" WeeklyOnDay5="0" WeeklyOnDay6="0" WeeklyOnDay7="0" MonthlyFrequency="1" MonthlyDaySel="D" MonthlyOnDay="1" MonthlyOnWeek="1" MonthlyOnDayOfWeek="1" PeriodFrequency="1" PeriodDateSel="S" PeriodFixedDay="1" StartDate="2025-01-23 00:00:00" NoEndDate="1" NoRunLimit="1" RunCntr="17" NextRunDate="2025-01-24 00:00:00" LastRunDate="2025-01-23 12:31:00" LastRunErrorLevel="0" LastRunResult="The operation has been completed successfully." StartTime="1900-01-01 07:31:00" Interval="0" NextRunTime="1900-01-01 07:31:00" ExactTime="0" DeletedDatabaseRecord="0" NoteID="a6400ec3-52d9-ef11-b8af-201e88fdc51d" KeepFullHistory="1"/>
+          </BPEventSchedule>
+        </row>
+      </BPEvent>
+    </data>
+  </data-set>
+</BpEvent>

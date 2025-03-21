@@ -1,0 +1,24 @@
+{
+  "name": "acumatica-uss-fence",
+  "version": "1.25.5.5",
+  "description": "Low code/no code customization package for managing and migrating Acumatica customizations specific to USS.  Dependent upon Rental360",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js -p USSFence -v 1.25.5.5",
+    "build:ci": "node build.js -p USSFence",
+    "deploy:dev": "build:ci && node deploy.js",
+    "deploy:local": "node deploy.js -p USSFence -v 1.25.5.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "fast-xml-parser": "^4.5.0",
+    "minimist": "^1.2.8",
+    "xml2js": "^0.6.2",
+    "xmlbuilder": "^15.1.1"
+  }
+}

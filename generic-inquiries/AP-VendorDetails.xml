@@ -1,0 +1,225 @@
+<GenericInquiryScreen>
+  <data-set>
+    <relations format-version="3" relations-version="20240201" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+      <link from="GIFilter (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)"/>
+      <link from="GINavigationCondition (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)"/>
+      <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)"/>
+      <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)"/>
+      <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)"/>
+      <link from="GIResult (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)"/>
+      <link from="GISort (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GITable (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="GIWhere (DesignID)" to="GIDesign (DesignID)"/>
+      <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id"/>
+      <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx"/>
+      <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)"/>
+      <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen"/>
+      <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)"/>
+      <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)"/>
+      <link from="PivotTable (NoteID)" to="FilterHeader (RefNoteID)"/>
+      <link from="PivotField (ScreenID, PivotTableID)" to="PivotTable (ScreenID, PivotTableID)"/>
+      <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)"/>
+      <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True"/>
+      <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True"/>
+      <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)"/>
+      <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True"/>
+      <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True"/>
+      <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username"/>
+      <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username"/>
+      <link from="GIDesign (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIFilter (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIFilter (NoteID)" to="GIFilterKvExt (RecordID)" type="RowKvExt"/>
+      <link from="GIGroupBy (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIOn (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIRelation (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIResult (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIResult (NoteID)" to="GIResultKvExt (RecordID)" type="RowKvExt"/>
+      <link from="GISort (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GITable (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note"/>
+      <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt"/>
+    </relations>
+    <layout>
+      <table name="GIDesign">
+        <table name="GIFilter" uplink="(DesignID) = (DesignID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+          <table name="GIFilterKvExt" uplink="(NoteID) = (RecordID)"/>
+        </table>
+        <table name="GIGroupBy" uplink="(DesignID) = (DesignID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="GIMassAction" uplink="(DesignID) = (DesignID)"/>
+        <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)"/>
+        <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
+          <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)"/>
+          <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)"/>
+        </table>
+        <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)"/>
+        <table name="GISort" uplink="(DesignID) = (DesignID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="GITable" uplink="(DesignID) = (DesignID)">
+          <table name="GIRelation" uplink="(DesignID, Alias) = (DesignID, ParentTable)">
+            <table name="GIOn" uplink="(DesignID, LineNbr) = (DesignID, RelationNbr)">
+              <table name="Note" uplink="(NoteID) = (NoteID)"/>
+            </table>
+            <table name="Note" uplink="(NoteID) = (NoteID)"/>
+          </table>
+          <table name="GIResult" uplink="(Alias, DesignID) = (ObjectName, DesignID)">
+            <table name="Note" uplink="(NoteID) = (NoteID)"/>
+            <table name="GIResultKvExt" uplink="(NoteID) = (RecordID)"/>
+          </table>
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="GIWhere" uplink="(DesignID) = (DesignID)">
+          <table name="Note" uplink="(NoteID) = (NoteID)"/>
+        </table>
+        <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignById">
+          <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)"/>
+          <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+            <table name="FilterRow" uplink="(FilterID) = (FilterID)"/>
+            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+              <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)"/>
+            </table>
+            <table name="Note" uplink="(NoteID) = (NoteID)"/>
+            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+          </table>
+          <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)"/>
+          </table>
+          <table name="MUITile" uplink="(ScreenID) = (ScreenID)"/>
+        </table>
+        <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+          <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)"/>
+          <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+            <table name="FilterRow" uplink="(FilterID) = (FilterID)"/>
+            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+              <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)"/>
+            </table>
+            <table name="Note" uplink="(NoteID) = (NoteID)"/>
+            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+          </table>
+          <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)"/>
+          </table>
+          <table name="MUITile" uplink="(ScreenID) = (ScreenID)"/>
+        </table>
+        <table name="SiteMap" uplink="(PrimaryScreenIDNew) = (ScreenID)" linkname="to1Screen">
+          <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)"/>
+          <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+            <table name="FilterRow" uplink="(FilterID) = (FilterID)"/>
+            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+              <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)"/>
+            </table>
+            <table name="Note" uplink="(NoteID) = (NoteID)"/>
+            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+          </table>
+          <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)"/>
+          </table>
+          <table name="MUITile" uplink="(ScreenID) = (ScreenID)"/>
+        </table>
+        <table name="Note" uplink="(NoteID) = (NoteID)"/>
+      </table>
+      <table name="MUIWorkspace">
+        <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)"/>
+      </table>
+      <table name="MUISubcategory"/>
+      <table name="MUIArea"/>
+    </layout>
+    <data>
+      <GIDesign>
+        <row DesignID="68d5c8c5-531f-498e-ac29-5cf1c105166c" Name="AP-VendorDetails" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0">
+          <GIFilter LineNbr="1" IsActive="1" Name="VendorID" FieldName="Vendor.AcctCD" DataType="string" DisplayName="Vendor ID" IsExpression="1" ColSpan="1" Required="0"/>
+          <GINavigationScreen Link="AP302000" LineNbr="2" SortOrder="2" WindowMode="L" IsActive="1" NoteID="85db5c79-e255-4c25-8744-0057006c02a4">
+            <GINavigationParameter LineNbr="4" FieldName="RefNbr" ParameterName="APPayment.refNbr" IsExpression="0"/>
+            <GINavigationParameter LineNbr="3" FieldName="DocType" ParameterName="APPayment.docType" IsExpression="0"/>
+            <GINavigationCondition LineNbr="1" IsActive="1" DataField="APPayment.docType" OpenBrackets="0" CloseBrackets="0" IsExpression="0" Condition="NN" Operator="A"/>
+          </GINavigationScreen>
+          <GINavigationScreen Link="AP301000" LineNbr="1" SortOrder="1" WindowMode="L" IsActive="1" NoteID="230ed54b-67a9-4a9c-b8d6-bbfcb6131e9a">
+            <GINavigationParameter LineNbr="2" FieldName="DocType" ParameterName="APInvoice.docType" IsExpression="0"/>
+            <GINavigationParameter LineNbr="1" FieldName="RefNbr" ParameterName="APInvoice.refNbr" IsExpression="0"/>
+            <GINavigationCondition LineNbr="1" IsActive="1" DataField="APInvoice.docType" OpenBrackets="0" CloseBrackets="0" IsExpression="0" Condition="NN" Operator="A"/>
+          </GINavigationScreen>
+          <GISort LineNbr="1" IsActive="1" DataFieldName="Vendor.AcctCD" SortOrder="A"/>
+          <GITable Alias="Vendor" Name="PX.Objects.AP.Vendor" Type="0">
+            <GIRelation LineNbr="3" ChildTable="FeaturesSet" IsActive="1" JoinType="C"/>
+            <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="acctName" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="60347266-2944-487b-b931-b1c100c38303"/>
+            <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="AcctCD" Width="100" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="2fd33835-b388-491c-80d4-83bb8298c0b3"/>
+          </GITable>
+          <GITable Alias="FeaturesSet" Name="PX.Objects.CS.FeaturesSet" Type="0"/>
+          <GITable Alias="APRegister" Name="PX.Objects.AP.APRegisterReport" Type="0">
+            <GIRelation LineNbr="4" ChildTable="APPayment" IsActive="1" JoinType="L">
+              <GIOn LineNbr="5" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A"/>
+              <GIOn LineNbr="4" ParentField="docType" Condition="E" ChildField="docType" Operation="A"/>
+            </GIRelation>
+            <GIRelation LineNbr="2" ChildTable="APInvoice" IsActive="1" JoinType="L">
+              <GIOn LineNbr="3" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A"/>
+              <GIOn LineNbr="2" ParentField="docType" Condition="E" ChildField="docType" Operation="A"/>
+            </GIRelation>
+            <GIRelation LineNbr="1" ChildTable="Vendor" IsActive="1" JoinType="L">
+              <GIOn LineNbr="1" ParentField="VendorID" Condition="E" ChildField="BAccountID" Operation="A"/>
+            </GIRelation>
+            <GIResult LineNbr="21" SortOrder="21" IsActive="1" Field="=Switch(DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>0  ,'Overdue' , DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;=0, Replace(CStr([APInvoice.DueDate]),'00:00:00',''))" SchemaField="APRegister.DocDesc" Caption="Cash Outflow bucket" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="3f9c47bc-7b7e-452f-9046-efca638de887"/>
+            <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="=IIf( DateDiff( 'd', Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate]) )>=0  and  DateDiff( 'd',Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate] ) )&lt;8  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue in 7 days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="3fad021d-a54d-4317-82e8-1f849d3e354b"/>
+            <GIResult LineNbr="19" SortOrder="19" IsActive="1" Field="=Switch(DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() ) &lt;1, 'B1-Current', DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>0 and DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;31,'B2-1-30', DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>30 and DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;61,  'B3-31-60', DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>60 and DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;91,  'B4-61-90', DateDiff( 'd',  IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>90,  'B5->90')" SchemaField="APAROverdueBucket.OverdueBucket" Caption="Overdue bucket" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="2dc16e06-c39a-46b8-8d35-1e25e9726ad9"/>
+            <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="=IIf( DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>90  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue 90+ days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="26cb374d-f9a4-438f-aa20-0c6ed8792888"/>
+            <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="=IIf( DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>60  and  DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;91  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue 61-90 days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="03615729-adba-4b68-a0c5-56266cede947"/>
+            <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="=IIf( DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>30  and  DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;61  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue 31-60 days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="eecc2640-671f-4cd1-b37a-18ea0c62b788"/>
+            <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="=IIf( DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )>0  and  DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;31  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue 1-30 days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="2b46b602-5a86-41ce-97be-897510493348"/>
+            <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="=IIf( DateDiff( 'd', Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate] ) )&lt;61  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue and Due in &lt;60 Days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="09bad102-563a-4955-a633-33d39c8abd96"/>
+            <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="=IIf( DateDiff( 'd', Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate] ) )&lt;31  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue and Due in &lt;30 Days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d3bd1c6c-3f77-416f-a3fc-89ab8478e5e5"/>
+            <GIResult LineNbr="12" SortOrder="12" IsActive="1" Field="=IIf( DateDiff( 'd', Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate] ) )&lt;8  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue and Due in &lt;7 Days" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="62ea0614-9905-44ff-8cb4-833bcdace76b"/>
+            <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="=IIf( DateDiff( 'd', Today(), IsNull([APInvoice.DueDate], [APRegister.DocDate] ) )&lt;0  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Overdue" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="2ee1c344-d7bb-40fb-a157-33be28dbb6e8"/>
+            <GIResult LineNbr="10" SortOrder="10" IsActive="1" Field="=IIf( DateDiff( 'd', IsNull([APInvoice.DueDate], [APRegister.DocDate] ), Today() )&lt;1  ,[APRegister.SignBalance]*[APRegister.DocBal] , 0)" SchemaField="APRegister.DocBal" Caption="Current" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="3ec6d65a-c94a-49ea-a3a7-ca9df625573a"/>
+            <GIResult LineNbr="9" SortOrder="9" IsActive="1" Field="=[APRegister.SignBalance]*[APRegister.DocBal]" SchemaField="APRegister.DocBal" Caption="Balance" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="f5941ce7-fb0f-453f-a937-77f6356927f7"/>
+            <GIResult LineNbr="8" SortOrder="8" IsActive="1" Field="=[APRegister.SignAmount]*[APRegister.OrigDocAmt]" SchemaField="APRegister.OrigDocAmt" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="6e41953f-b180-4e12-bbae-874b736df18f"/>
+            <GIResult LineNbr="6" SortOrder="6" IsActive="1" Field="docDate" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f593a6cf-c773-479e-832f-ae5462430742"/>
+            <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="73f03b2c-9128-42fa-9a54-c9818041df2b"/>
+            <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="refNbr" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="ffb59295-7bc9-45aa-b05b-9ffcbe82f044"/>
+            <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="DocType" Width="80" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="282cdb51-2167-4225-8f30-d217b251c3e8"/>
+          </GITable>
+          <GITable Alias="APPayment" Name="PX.Objects.AP.APPayment" Type="0"/>
+          <GITable Alias="APInvoice" Name="PX.Objects.AP.APInvoice" Type="0">
+            <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="dueDate" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="58d53b7a-ca84-4e01-9f57-aece6b42745d"/>
+          </GITable>
+          <GITable Alias="APAROverdueBucket" Name="PX.Objects.Common.DAC.APAROverdueBucket" Type="0"/>
+          <GIWhere LineNbr="7" IsActive="1" DataFieldName="Vendor.vOrgBAccountID" Condition="E" IsExpression="0" Value1="@me" CloseBrackets=")" Operation="A"/>
+          <GIWhere LineNbr="6" IsActive="1" OpenBrackets="(" DataFieldName="FeaturesSet.visibilityRestriction" Condition="E" IsExpression="0" Value1="0" Operation="O"/>
+          <GIWhere LineNbr="5" IsActive="1" DataFieldName="APRegister.status" Condition="E" IsExpression="1" Value1="Z" CloseBrackets=")" Operation="A"/>
+          <GIWhere LineNbr="4" IsActive="1" OpenBrackets="(" DataFieldName="APRegister.status" Condition="E" IsExpression="1" Value1="N" Operation="O"/>
+          <GIWhere LineNbr="3" IsActive="1" DataFieldName="APRegister.docType" Condition="NE" IsExpression="1" Value1="PPM" Operation="A"/>
+          <GIWhere LineNbr="2" IsActive="1" DataFieldName="[VendorID]" Condition="NU" IsExpression="0" CloseBrackets=")" Operation="A"/>
+          <GIWhere LineNbr="1" IsActive="1" OpenBrackets="(" DataFieldName="Vendor.acctCD" Condition="E" IsExpression="0" Value1="[VendorID]" Operation="O"/>
+          <SiteMap linkname="toDesignById">
+            <row Title="Vendor Details" Url="~/genericinquiry/genericinquiry.aspx?id=68d5c8c5-531f-498e-ac29-5cf1c105166c" ScreenID="AP0012DB" NodeID="bc81cdfe-bce6-473e-8d23-48ce7cffe912" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+              <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="302050" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1"/>
+              </MUIScreen>
+            </row>
+          </SiteMap>
+        </row>
+      </GIDesign>
+      <MUIWorkspace>
+        <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1">
+          <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1"/>
+        </row>
+        <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
+          <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1"/>
+        </row>
+      </MUIWorkspace>
+      <MUISubcategory>
+        <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1"/>
+        <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1"/>
+      </MUISubcategory>
+    </data>
+  </data-set>
+</GenericInquiryScreen>

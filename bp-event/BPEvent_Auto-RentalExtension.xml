@@ -1,0 +1,70 @@
+<BpEvent>
+  <data-set>
+    <relations format-version="3" relations-version="20230530" main-table="BPEvent">
+      <link from="BPEventSubscriber (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTriggerCondition (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventTrackingField (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPEventSchedule (EventID)" to="BPEvent (EventID)"/>
+      <link from="BPInquiryParameter (EventID)" to="BPEvent (EventID)"/>
+      <link from="FilterHeader (FilterID)" to="BPEvent (FilterID)"/>
+      <link from="AUSchedule (ScheduleID)" to="BPEventSchedule (ScheduleID)"/>
+      <link from="Notification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="SYMapping (MappingID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="MobileNotification (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="TaskTemplate (NoteID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="ActionExecution (ExecutionID)" to="BPEventSubscriber (HandlerID)"/>
+      <link from="AUScheduleFilter (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="AUScheduleFill (ScheduleID)" to="AUSchedule (ScheduleID)"/>
+      <link from="NotificationReport (NotificationID)" to="Notification (NotificationID)"/>
+      <link from="NotificationReportParameter (ReportID)" to="NotificationReport (ReportID)"/>
+      <link from="TaskTemplateSetting (TaskTemplateID)" to="TaskTemplate (TaskTemplateID)"/>
+      <link from="ActionExecutionMapping (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="ActionExecutionParameter (ExecutionID)" to="ActionExecution (ExecutionID)"/>
+      <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt"/>
+    </relations>
+    <layout>
+      <table name="BPEvent">
+        <table name="BPEventSubscriber" uplink="(EventID) = (EventID)">
+          <table name="Notification" uplink="(HandlerID) = (NoteID)">
+            <table name="NotificationReport" uplink="(NotificationID) = (NotificationID)">
+              <table name="NotificationReportParameter" uplink="(ReportID) = (ReportID)"/>
+            </table>
+          </table>
+          <table name="SYMapping" uplink="(HandlerID) = (MappingID)"/>
+          <table name="MobileNotification" uplink="(HandlerID) = (NoteID)"/>
+          <table name="TaskTemplate" uplink="(HandlerID) = (NoteID)">
+            <table name="TaskTemplateSetting" uplink="(TaskTemplateID) = (TaskTemplateID)"/>
+          </table>
+          <table name="ActionExecution" uplink="(HandlerID) = (ExecutionID)">
+            <table name="ActionExecutionMapping" uplink="(ExecutionID) = (ExecutionID)"/>
+            <table name="ActionExecutionParameter" uplink="(ExecutionID) = (ExecutionID)"/>
+          </table>
+        </table>
+        <table name="BPEventTriggerCondition" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventTrackingField" uplink="(EventID) = (EventID)"/>
+        <table name="BPEventSchedule" uplink="(EventID) = (EventID)">
+          <table name="AUSchedule" uplink="(ScheduleID) = (ScheduleID)">
+            <table name="AUScheduleFilter" uplink="(ScheduleID) = (ScheduleID)"/>
+            <table name="AUScheduleFill" uplink="(ScheduleID) = (ScheduleID)"/>
+          </table>
+        </table>
+        <table name="BPInquiryParameter" uplink="(EventID) = (EventID)"/>
+        <table name="FilterHeader" uplink="(FilterID) = (FilterID)">
+          <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)"/>
+        </table>
+      </table>
+    </layout>
+    <data>
+      <BPEvent>
+        <row EventID="bde9c073-8ac1-4ff3-afb2-b5b0500fd02b" Name="Auto-RentalExtension" Description="update extension due flag" ScreenID="US400010" ViewName="Results" ShowMassAction="0" Active="1" Type="1" RowProcessingType="0" IsGroupByNew="1" NoteID="38443869-e9d4-ef11-b61a-7c1e52183c67" TrackAllFields="0">
+          <BPEventSubscriber HandlerID="401f6804-4950-4482-b370-f41de722ac2d" Active="1" OrderNbr="96" Type="IMPT" StopOnError="0" IsProcessSingleLine="0">
+            <SYMapping Name="Auto-RentalExtension" IsActive="1" ScreenID="SO301000" MappingType="I" GraphName="PX.Objects.SO.SOOrderEntry" ViewName="Document" GridViewName="Transactions" ProviderID="2a576d3d-2bc2-4678-9aa1-b202f0ededcc" ProviderObject="Results" SyncType="F" Status="N" FieldCntr="384" FieldOrderCntr="0" ImportConditionCntr="0" ConditionCntr="0" DataCntr="0" NbrRecords="0" DiscardResult="0" NoteID="49c92c38-d8f0-ef11-b61b-7c1e52183c67" IsExportOnlyMappingFields="0" RepeatingData="0" ProcessInParallel="0" BreakOnError="1" BreakOnTarget="1" SkipHeaders="0"/>
+          </BPEventSubscriber>
+          <BPEventSchedule ScheduleID="1795" Active="1">
+            <AUSchedule ScreenID="US400010" Description="Auto-RentalExtension" GraphName="PX.Data.PXGenericInqGrph" ViewName="Results" FilterName="Filter" TableName="PX.Data.GenericResult" FilterCntr="0" FillCntr="0" IsActive="1" ActionName="RaiseEvent" TimeZoneID="GMTM0500G" ScheduleType="D" DailyFrequency="1" WeeklyFrequency="1" WeeklyOnDay1="1" WeeklyOnDay2="0" WeeklyOnDay3="0" WeeklyOnDay4="0" WeeklyOnDay5="0" WeeklyOnDay6="0" WeeklyOnDay7="0" MonthlyFrequency="1" MonthlyDaySel="D" MonthlyOnDay="1" MonthlyOnWeek="1" MonthlyOnDayOfWeek="1" PeriodFrequency="1" PeriodDateSel="S" PeriodFixedDay="1" StartDate="2025-01-17 00:00:00" NoEndDate="1" NoRunLimit="1" RunCntr="0" NextRunDate="2025-01-17 00:00:00" LastRunErrorLevel="0" StartTime="1900-01-01 02:00:00" Interval="0" NextRunTime="1900-01-01 02:00:00" ExactTime="0" DeletedDatabaseRecord="0" NoteID="4bf92d75-e9d4-ef11-b61a-7c1e52183c67" HistoryRetainCount="1" KeepFullHistory="0"/>
+          </BPEventSchedule>
+        </row>
+      </BPEvent>
+    </data>
+  </data-set>
+</BpEvent>

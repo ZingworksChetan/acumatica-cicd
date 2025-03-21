@@ -1,0 +1,267 @@
+<GenericInquiryScreen>
+        <data-set>
+            <relations format-version="3" relations-version="20240201" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+                <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+                <link from="GINavigationCondition (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+                <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
+                <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+                <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
+                <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
+                <link from="GISort (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GITable (DesignID)" to="GIDesign (DesignID)" />
+                <link from="GIWhere (DesignID)" to="GIDesign (DesignID)" />
+                <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id" />
+                <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx" />
+                <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
+                <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
+                <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
+                <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
+                <link from="PivotTable (NoteID)" to="FilterHeader (RefNoteID)" />
+                <link from="PivotField (ScreenID, PivotTableID)" to="PivotTable (ScreenID, PivotTableID)" />
+                <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+                <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+                <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+                <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+                <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+                <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+                <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+                <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+                <link from="GIDesign (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIFilter (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIFilter (NoteID)" to="GIFilterKvExt (RecordID)" type="RowKvExt" />
+                <link from="GIGroupBy (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIOn (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIRelation (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIResult (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIResult (NoteID)" to="GIResultKvExt (RecordID)" type="RowKvExt" />
+                <link from="GISort (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GITable (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
+                <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
+            </relations>
+            <layout>
+                <table name="GIDesign">
+                    <table name="GIFilter" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="GIFilterKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="GIGroupBy" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GIMassAction" uplink="(DesignID) = (DesignID)" />
+                    <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)" />
+                    <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
+                        <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                        <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                    </table>
+                    <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                    <table name="GISort" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GITable" uplink="(DesignID) = (DesignID)">
+                        <table name="GIRelation" uplink="(DesignID, Alias) = (DesignID, ParentTable)">
+                            <table name="GIOn" uplink="(DesignID, LineNbr) = (DesignID, RelationNbr)">
+                                <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        </table>
+                        <table name="GIResult" uplink="(Alias, DesignID) = (ObjectName, DesignID)">
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="GIResultKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GIWhere" uplink="(DesignID) = (DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignById">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="SiteMap" uplink="(PrimaryScreenIDNew) = (ScreenID)" linkname="to1Screen">
+                        <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                        <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                            <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                            <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                                <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                            </table>
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                            <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                            <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                        </table>
+                        <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                    </table>
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="MUIWorkspace">
+                    <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+                </table>
+                <table name="MUISubcategory" />
+                <table name="MUIArea" />
+            </layout>
+            <data>
+                <GIDesign>
+                    <row DesignID="882793fe-618c-483c-a6b7-6d9f06b68ee9" Name="ext" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" NotesAndFilesTable="$&lt;None&gt;">
+                        <GITable Alias="NVRTChangeOrder" Name="NV.Rental360.ChangeOrders.NVRTChangeOrder" Type="0">
+                            <GIResult LineNbr="101" SortOrder="100" IsActive="1" Field="workgroupID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="0bf843e9-2733-4893-8222-9545a17a2262" />
+                            <GIResult LineNbr="100" SortOrder="99" IsActive="1" Field="workgroupID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="81d6cdf2-72ba-4910-acd9-ff5d1971a232" />
+                            <GIResult LineNbr="99" SortOrder="98" IsActive="1" Field="usrNAWContractPeriod" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="8d20bb16-2154-42ab-8f1f-0c935c213b38" />
+                            <GIResult LineNbr="98" SortOrder="97" IsActive="1" Field="termsID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="75500ad1-8ca3-411e-8871-e2c959c74e29" />
+                            <GIResult LineNbr="97" SortOrder="96" IsActive="1" Field="termsID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="4522c5f1-ac5d-485b-8779-0ea0b3733cb6" />
+                            <GIResult LineNbr="96" SortOrder="95" IsActive="1" Field="taxZoneID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7b4dac9e-072a-4a50-a672-2dacc8c6b9b6" />
+                            <GIResult LineNbr="95" SortOrder="94" IsActive="1" Field="taxZoneID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="98834df3-9dfb-4019-b0e7-25c0dd4d54b5" />
+                            <GIResult LineNbr="94" SortOrder="93" IsActive="1" Field="taxTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="5488f046-2acf-4cc4-9913-495da250438d" />
+                            <GIResult LineNbr="93" SortOrder="92" IsActive="1" Field="taxRegistrationID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7a71b9ae-9619-43f4-8d3e-4cfda5ab1179" />
+                            <GIResult LineNbr="92" SortOrder="91" IsActive="1" Field="taxCalcMode" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="9ff93457-a9dd-4ab2-ab84-3c586f2d7e70" />
+                            <GIResult LineNbr="91" SortOrder="90" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="8def1d0b-8f25-4e3b-bcbb-dcc063ff0258" />
+                            <GIResult LineNbr="90" SortOrder="89" IsActive="1" Field="sOOrderType" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="4a5386d8-890a-4196-bed9-f5b7dae8657e" />
+                            <GIResult LineNbr="89" SortOrder="88" IsActive="1" Field="sOOrderNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="392a82d7-74b5-432c-adca-fe58115b506f" />
+                            <GIResult LineNbr="88" SortOrder="87" IsActive="1" Field="shipVia_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="9292b7bf-fe56-4a31-814b-feaaa17f2c18" />
+                            <GIResult LineNbr="87" SortOrder="86" IsActive="1" Field="shipVia" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7e66ed62-a0b3-461a-92ef-095f023ad6ae" />
+                            <GIResult LineNbr="86" SortOrder="85" IsActive="1" Field="shipContactID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="ab292b59-1b14-4086-b130-773456fc6ba4" />
+                            <GIResult LineNbr="85" SortOrder="84" IsActive="1" Field="shipAddressID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="50012505-a0e9-47eb-97f9-5b1c37235a2f" />
+                            <GIResult LineNbr="84" SortOrder="83" IsActive="1" Field="scheduleStartDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="59c96032-fcbd-4039-be3a-68c838fa9e38" />
+                            <GIResult LineNbr="83" SortOrder="82" IsActive="1" Field="scheduleEndDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="95339d35-fc80-42cb-9d61-fdae5f0e298f" />
+                            <GIResult LineNbr="82" SortOrder="81" IsActive="1" Field="rentalOrderType_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="d0caf19e-55d7-4907-ad04-8c54d3b6acd5" />
+                            <GIResult LineNbr="81" SortOrder="80" IsActive="1" Field="rentalOrderType" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="1ae44019-9e4a-4f2b-95f7-3870bca8526e" />
+                            <GIResult LineNbr="80" SortOrder="79" IsActive="1" Field="released" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="951050dc-a55e-42e2-9161-b89c3ce41bce" />
+                            <GIResult LineNbr="79" SortOrder="78" IsActive="1" Field="quoteToInvoice" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="dfa743c6-34f0-496f-a19b-eb4864baea3d" />
+                            <GIResult LineNbr="78" SortOrder="77" IsActive="1" Field="ownerID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="486bf26c-c0d2-47a0-8f1e-b9fb1e82c292" />
+                            <GIResult LineNbr="77" SortOrder="76" IsActive="1" Field="ownerID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="44b836f5-75b9-4ee4-aa82-11efd07382ba" />
+                            <GIResult LineNbr="76" SortOrder="75" IsActive="1" Field="overrideTaxZone" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="3e5af900-aa8b-438e-b23e-5ac6275224d0" />
+                            <GIResult LineNbr="75" SortOrder="74" IsActive="1" Field="origDiscAmt" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="ee56761b-041c-4d9a-8b57-74c5cd240124" />
+                            <GIResult LineNbr="74" SortOrder="73" IsActive="1" Field="orderType" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="57ab33c1-094d-44e7-a699-124eaff26dda" />
+                            <GIResult LineNbr="73" SortOrder="72" IsActive="1" Field="orderTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="6a2fbb9c-3769-46d4-b850-e342a4df842f" />
+                            <GIResult LineNbr="72" SortOrder="71" IsActive="1" Field="orderNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="f7b8ae6f-abb7-48c2-b40c-35c15c520301" />
+                            <GIResult LineNbr="71" SortOrder="70" IsActive="1" Field="orderDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="3ae7af95-8f3c-44fd-b64a-d6d581f7803d" />
+                            <GIResult LineNbr="70" SortOrder="69" IsActive="1" Field="noteID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="71306fe5-a861-49c4-8505-e931b995b09f" />
+                            <GIResult LineNbr="69" SortOrder="68" IsActive="1" Field="miscTot" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="f65f07f2-9c94-415c-a07f-9c2b9ae416cb" />
+                            <GIResult LineNbr="68" SortOrder="67" IsActive="1" Field="lineTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="cfed971a-b423-4987-b034-1afeb568a530" />
+                            <GIResult LineNbr="67" SortOrder="66" IsActive="1" Field="lastModifiedDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="2dc3ab2a-b42a-44fa-b1db-491e8a2f8c5c" />
+                            <GIResult LineNbr="66" SortOrder="65" IsActive="1" Field="lastModifiedByScreenID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="1ae3f314-d7e2-4d7e-a88d-a6e2ae8f244e" />
+                            <GIResult LineNbr="65" SortOrder="64" IsActive="1" Field="lastModifiedByID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c16e5abb-1bdb-4497-ab96-bbab0d87549d" />
+                            <GIResult LineNbr="64" SortOrder="63" IsActive="1" Field="lastModifiedByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="4676b0e2-6ec5-485b-bc7c-688b8007c9cb" />
+                            <GIResult LineNbr="63" SortOrder="62" IsActive="1" Field="lastLineNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="07c27873-b436-4661-98e1-7667055b246b" />
+                            <GIResult LineNbr="62" SortOrder="61" IsActive="1" Field="jobSiteNbr_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="d36246b1-cbb0-4a22-89ea-b313cafe51a3" />
+                            <GIResult LineNbr="61" SortOrder="60" IsActive="1" Field="jobSiteNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="5a636751-e12a-40f9-9346-bc67022e60d5" />
+                            <GIResult LineNbr="60" SortOrder="59" IsActive="1" Field="isTaxValid" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="6aafd0ee-102d-4763-8631-591473233405" />
+                            <GIResult LineNbr="59" SortOrder="58" IsActive="1" Field="hold" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="11bf8a93-694b-4c89-98dc-a60854a70bb2" />
+                            <GIResult LineNbr="58" SortOrder="57" IsActive="1" Field="groupDiscTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="ccd010ac-16bb-410a-850e-89a643ffd03e" />
+                            <GIResult LineNbr="57" SortOrder="56" IsActive="1" Field="gotReadyForArchiveAt" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="df50842d-6d65-484b-aad2-91d01b57122f" />
+                            <GIResult LineNbr="56" SortOrder="55" IsActive="1" Field="externalTaxExemptionNumber" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="f1c217fd-9bf6-49e6-a62e-17c05d059596" />
+                            <GIResult LineNbr="55" SortOrder="54" IsActive="1" Field="documentDiscTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="af2ba0ab-fa71-46d4-b9ec-72a024fa287a" />
+                            <GIResult LineNbr="54" SortOrder="53" IsActive="1" Field="discTot" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="b898b960-5e01-4282-b201-b279a97b38f0" />
+                            <GIResult LineNbr="53" SortOrder="52" IsActive="1" Field="discTaken" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="ff371fe0-681b-484d-86fb-adeb5064fd06" />
+                            <GIResult LineNbr="52" SortOrder="51" IsActive="1" Field="discountedPrice" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="527fb687-f4d1-436e-9533-1c3a0b634668" />
+                            <GIResult LineNbr="51" SortOrder="50" IsActive="1" Field="discBal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="f904ced4-6f72-4839-8d9a-79a65ffea37f" />
+                            <GIResult LineNbr="50" SortOrder="49" IsActive="1" Field="dfltSiteID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="720cd016-c137-4ee1-b8b8-3bfe1e6d858b" />
+                            <GIResult LineNbr="49" SortOrder="48" IsActive="1" Field="dfltSiteID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7ad8361e-fcd4-42a8-96db-6145d9a4287e" />
+                            <GIResult LineNbr="48" SortOrder="47" IsActive="1" Field="dfltProjectID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7d135431-4484-4abf-8c57-2ef77dd5f6b0" />
+                            <GIResult LineNbr="47" SortOrder="46" IsActive="1" Field="dfltProjectID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="2655523f-c139-4efe-b937-ef2ff5fe0d87" />
+                            <GIResult LineNbr="46" SortOrder="45" IsActive="1" Field="detailExtPriceTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7ca732a9-e474-47a9-af3b-47d51c4378ed" />
+                            <GIResult LineNbr="45" SortOrder="44" IsActive="1" Field="description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="d8035ebe-ebde-40c8-8031-fed5d965c842" />
+                            <GIResult LineNbr="44" SortOrder="43" IsActive="1" Field="deliverTo" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="2c4ce4fb-d2db-43dd-985b-c081096f5248" />
+                            <GIResult LineNbr="43" SortOrder="42" IsActive="1" Field="DatabaseRecordStatus" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c5692711-0baa-4c84-85e8-11f64dd607cc" />
+                            <GIResult LineNbr="42" SortOrder="41" IsActive="1" Field="cycleType" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="e4c4710d-2210-43ff-995f-98b54f54b584" />
+                            <GIResult LineNbr="41" SortOrder="40" IsActive="1" Field="cycleNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a1afd3fe-037e-4eaf-b5cd-9c04eb3eea73" />
+                            <GIResult LineNbr="40" SortOrder="39" IsActive="1" Field="customerLocationID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="43d73eca-eb33-4d07-b993-4ef54bb99980" />
+                            <GIResult LineNbr="39" SortOrder="38" IsActive="1" Field="customerLocationID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c2600bbf-6165-429e-9f77-afdfbaf547cc" />
+                            <GIResult LineNbr="38" SortOrder="37" IsActive="1" Field="customerID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="0a00d870-179d-4678-99a0-9fed1d9e321a" />
+                            <GIResult LineNbr="37" SortOrder="36" IsActive="1" Field="customerID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="6ea8cfeb-8d17-4a48-ba87-4d11e5934560" />
+                            <GIResult LineNbr="36" SortOrder="35" IsActive="1" Field="curyTaxTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="b274d502-cddb-46a5-9302-26c0e482086d" />
+                            <GIResult LineNbr="35" SortOrder="34" IsActive="1" Field="curyOrigDiscAmt" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="0c0ae2bd-51be-4e4d-ae5e-31fdcad6befe" />
+                            <GIResult LineNbr="34" SortOrder="33" IsActive="1" Field="curyOrderTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="bdefb563-6129-47ae-b54c-70672ae75986" />
+                            <GIResult LineNbr="33" SortOrder="32" IsActive="1" Field="curyMiscTot" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="fd244c0c-01c4-4836-8b44-04a285b9021b" />
+                            <GIResult LineNbr="32" SortOrder="31" IsActive="1" Field="curyLineTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="0c27f0d7-034d-4e1f-94c6-2da5427ec143" />
+                            <GIResult LineNbr="31" SortOrder="30" IsActive="1" Field="curyInfoID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="f5a72895-36ce-489d-95d6-6cacc5317535" />
+                            <GIResult LineNbr="30" SortOrder="29" IsActive="1" Field="curyID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="dd577f5d-4df6-4570-8a41-c1e3d8f4469f" />
+                            <GIResult LineNbr="29" SortOrder="28" IsActive="1" Field="curyGroupDiscTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="2927f60b-117a-4694-abaf-20d83d4ed4f0" />
+                            <GIResult LineNbr="28" SortOrder="27" IsActive="1" Field="curyDocumentDiscTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="5a896ee4-f489-402b-aa05-626224157251" />
+                            <GIResult LineNbr="27" SortOrder="26" IsActive="1" Field="curyDiscTot" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="cb2401d6-902d-4c0f-a868-07b7c19b8fd3" />
+                            <GIResult LineNbr="26" SortOrder="25" IsActive="1" Field="curyDiscTaken" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a1a29d20-d655-4ee4-9fff-78133c2db84f" />
+                            <GIResult LineNbr="25" SortOrder="24" IsActive="1" Field="curyDiscountedPrice" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="df55608e-7570-4c1b-9c8f-675f8d9e67c3" />
+                            <GIResult LineNbr="24" SortOrder="23" IsActive="1" Field="curyDiscBal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="3b80dc78-f760-4f67-8a03-cb302edb1c09" />
+                            <GIResult LineNbr="23" SortOrder="22" IsActive="1" Field="curyDetailExtPriceTotal" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="9b5ca8d1-f1d5-4a1f-a4ba-af8a51b3b685" />
+                            <GIResult LineNbr="22" SortOrder="21" IsActive="1" Field="createdDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="329b5d70-2d0a-45e4-b3d9-9de74532dba8" />
+                            <GIResult LineNbr="21" SortOrder="20" IsActive="1" Field="createdByScreenID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="ee7b8555-1399-4da4-8f1f-b14d913748ab" />
+                            <GIResult LineNbr="20" SortOrder="19" IsActive="1" Field="createdByID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="6d67485f-4be2-4729-8df8-e21c94b24b4f" />
+                            <GIResult LineNbr="19" SortOrder="18" IsActive="1" Field="createdByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="45f62559-dac9-4d79-b430-381753d0d480" />
+                            <GIResult LineNbr="18" SortOrder="17" IsActive="1" Field="contractStartDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="0556aaa1-6ea9-4bee-9a74-49ef22a004bd" />
+                            <GIResult LineNbr="17" SortOrder="16" IsActive="1" Field="contractEndDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="dd8a8983-3a19-43a1-b31f-b875182f8953" />
+                            <GIResult LineNbr="16" SortOrder="15" IsActive="1" Field="contactID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="7311a3c7-2ff7-4b94-a6c2-9c9cad4df24c" />
+                            <GIResult LineNbr="15" SortOrder="14" IsActive="1" Field="contactID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="8dbae2c7-14b8-41e0-b29d-46648ca5d8a3" />
+                            <GIResult LineNbr="14" SortOrder="13" IsActive="1" Field="completed" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="8106041c-c8c3-41aa-8f10-c7432b64532a" />
+                            <GIResult LineNbr="13" SortOrder="12" IsActive="1" Field="branchID_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="59517905-3e9d-425e-a76a-5d3bf7fc2950" />
+                            <GIResult LineNbr="12" SortOrder="11" IsActive="1" Field="branchID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c2aac31c-2f61-4a8f-bc11-5a74adce9fc9" />
+                            <GIResult LineNbr="11" SortOrder="10" IsActive="1" Field="billContactID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a0ad246a-9921-43a6-bd32-24e0cbca5a06" />
+                            <GIResult LineNbr="10" SortOrder="9" IsActive="1" Field="billAddressID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="1bfa60c6-f3ed-4101-bf84-5435816b4d39" />
+                            <GIResult LineNbr="9" SortOrder="8" IsActive="1" Field="behavior" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="783241c5-ce48-4ed3-a8f3-680174518096" />
+                            <GIResult LineNbr="8" SortOrder="7" IsActive="1" Field="avalaraCustomerUsageType" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a92b8665-9fe2-4777-b5bd-6033fb0ccf23" />
+                            <GIResult LineNbr="7" SortOrder="6" IsActive="1" Field="approved" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="eea3cdc2-0f1d-4283-8643-07ffeb58c9e6" />
+                            <GIResult LineNbr="6" SortOrder="5" IsActive="1" Field="addOnType5" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="e7b96ed9-1ef0-44a8-a043-8a2079c98c48" />
+                            <GIResult LineNbr="5" SortOrder="4" IsActive="1" Field="addOnType4" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="54b90340-e0dd-41d9-a733-3795e6fb3f9f" />
+                            <GIResult LineNbr="4" SortOrder="3" IsActive="1" Field="addOnType3" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="6b913712-580f-4f2d-92f6-8956d3a727be" />
+                            <GIResult LineNbr="3" SortOrder="2" IsActive="1" Field="addOnType2" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="59ebbb70-40a1-4dc2-a904-ae87a8274b8a" />
+                            <GIResult LineNbr="2" SortOrder="1" IsActive="1" Field="addOnType1" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="48215c47-dc6d-4518-9012-5233338a963a" />
+                        </GITable>
+                        <SiteMap linkname="toDesignById">
+                            <row Title="ext" Url="~/GenericInquiry/GenericInquiry.aspx?id=882793fe-618c-483c-a6b7-6d9f06b68ee9" ScreenID="US400005" NodeID="358a514c-a630-43d1-a004-00dbb64ddd79" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                                <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="793522" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                                    <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                                </MUIScreen>
+                            </row>
+                        </SiteMap>
+                    </row>
+                </GIDesign>
+                <MUIWorkspace>
+                    <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1">
+                        <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                    </row>
+                    <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
+                        <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                    </row>
+                </MUIWorkspace>
+                <MUISubcategory>
+                    <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                    <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                </MUISubcategory>
+            </data>
+        </data-set>
+    </GenericInquiryScreen>
+    
