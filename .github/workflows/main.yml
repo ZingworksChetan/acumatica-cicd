@@ -64,6 +64,6 @@ jobs:
           AC_TENANT: ${{ vars.AC_TENANT }}
           AC_BRANCH: ${{ vars.AC_BRANCH }}
           AC_BASE_URL: ${{ vars.AC_BASE_URL }}
-          PROJECT_NAME: ${{ github.event.inputs.projectName }}
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           PROJECT_DESCRIPTION: ${{ vars.PROJECT_DESCRIPTION }}
           PROJECT_LEVEL: ${{ vars.PROJECT_LEVEL }}
