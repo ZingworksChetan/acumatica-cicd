@@ -41,9 +41,9 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy RemoteSigned -Scope Process -Force
-        shell: pwsh
+      # - name: Set PowerShell Execution Policy
+      #   run: Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+      #   shell: pwsh
 
       - name: Install dependencies
         run: npm install
