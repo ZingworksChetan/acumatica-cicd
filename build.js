@@ -39,4 +39,3 @@ const zip = require('adm-zip');
 const zipFile = new zip();
 zipFile.addLocalFile(`${build}/project.xml`);
 zipFile.writeZip(`${build}/${projectVersion}.zip`);
-
