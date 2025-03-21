@@ -1,6 +1,6 @@
 {
   "name": "acumatica-uss-fence",
-  "version": "1.25.7.2",
+  "version": "1.25.7.3",
   "description": "Low code/no code customization package for managing and migrating Acumatica customizations specific to USS.  Dependent upon Rental360",
   "main": "index.js",
   "scripts": {

@@ -1,69 +1,69 @@
-# name: Deploy Package
+name: Deploy Package
 
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       environment:
-#         description: 'Deployment environment'
-#         required: true
-#         type: choice
-#         options:
-#           - DEV
-#           - QA
-#           - STG
-#           - PROD
-#       version:
-#         description: 'Version to deploy'
-#         required: false
-#         default: '1.0.0'
-#       projectName:
-#         description: 'Project Name for the ZipFile to deploy'
-#         required: true
-#         default: '1.0.0'
-#       delete-previous:
-#         type: boolean
-#         description: 'Delete previous deployment'
-#         required: false
-#         default: false
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: choice
+        options:
+          - LOCAL
+          - DEV
+          - QA
+          - STG
+          - PROD
+      version:
+        description: 'Version to deploy'
+        required: false
+        default: '1.0.0'
+      projectName:
+        description: 'Project Name for the ZipFile to deploy'
+        required: true
+      delete-previous:
+        type: boolean
+        description: 'Delete previous deployment'
+        required: false
+        default: false
 
-# jobs:
-#   deploy-dev:
-#     runs-on: ubuntu-latest
-#     if: github.event.inputs.environment == 'DEV'
-#     environment: DEV
+jobs:
+  deploy-local:
+    runs-on: self-hosted  # Use your Windows machine
+    if: github.event.inputs.environment == 'LOCAL'
+    environment: LOCAL
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-#       - name: Install dependencies
-#         run: npm install
+      - name: Install dependencies
+        run: npm install
 
-#       - name: Build project
-#         run: npm run build:ci
+      - name: Build project
+        run: npm run build:ci
       
-#       - name: List files
-#         run: ls -lR
+      - name: List files
+        run: dir /s /b  # Windows equivalent of 'ls -lR'
       
-#       - name: upload build artifact
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: project-build
-#           path: build  
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-build
+          path: build  
 
-#       - name: Deploy to DEV
-#         run: npm run deploy:dev
-#         env:
-#           AC_USERNAME: ${{ vars.AC_USERNAME }}
-#           AC_PASSWORD: ${{ secrets.AC_PASSWORD }}
-#           AC_TENANT: ${{ vars.AC_TENANT }}
-#           AC_BRANCH: ${{ vars.AC_BRANCH }}
-#           AC_BASE_URL: ${{ vars.AC_BASE_URL }}
-#           PROJECT_NAME: ${{ vars.PROJECT_NAME }}
-#           PROJECT_DESCRIPTION: ${{ vars.PROJECT_DESCRIPTION }}
-#           PROJECT_LEVEL: ${{ vars.PROJECT_LEVEL }}
+      - name: Deploy to Local Acumatica
+        run: npm run deploy:local
+        env:
+          AC_USERNAME: ${{ secrets.AC_USERNAME }}
+          AC_PASSWORD: ${{ secrets.AC_PASSWORD }}
+          AC_TENANT: ${{ vars.AC_TENANT }}
+          AC_BRANCH: ${{ vars.AC_BRANCH }}
+          AC_BASE_URL: ${{ vars.AC_BASE_URL }}
+          PROJECT_NAME: ${{ github.event.inputs.projectName }}
+          PROJECT_DESCRIPTION: ${{ vars.PROJECT_DESCRIPTION }}
+          PROJECT_LEVEL: ${{ vars.PROJECT_LEVEL }}
