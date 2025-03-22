@@ -19,7 +19,7 @@ on:
         default: '1.0.0'
       projectName:
         description: 'Project Name for the ZipFile to deploy'
-        required: true
+        required: false
       delete-previous:
         type: boolean
         description: 'Delete previous deployment'
