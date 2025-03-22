@@ -28,46 +28,50 @@ on:
 
 jobs:
   deploy-local:
-    runs-on: self-hosted  # Use your Windows machine
+    runs-on: self-hosted  # Use your self-hosted Windows runner
     if: github.event.inputs.environment == 'LOCAL'
     environment: LOCAL
 
     steps:
-      - name: Checkout code
+      - name: 🛠️ Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: 🛠️ Set PowerShell Execution Policy
+        run: Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+        shell: pwsh
+
+      - name: 🛠️ Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # - name: Set PowerShell Execution Policy
-      #   run: Set-ExecutionPolicy RemoteSigned -Scope Process -Force
-      #   shell: pwsh
-
-      - name: Install dependencies
+      - name: 🛠️ Install dependencies
         run: npm install
+        shell: pwsh
 
-      - name: Build project
+      - name: 🛠️ Build project
         run: npm run build:ci
+        shell: pwsh
       
-      - name: List files
-        run: dir /s /b  # Windows equivalent of 'ls -lR'
+      - name: 📂 List files in directory
+        run: dir /s /b  # Windows command equivalent of 'ls -lR'
+        shell: pwsh
       
-      - name: Upload build artifact
+      - name: 📦 Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: project-build
           path: build  
 
-      - name: Deploy to Local Acumatica
+      - name: 🚀 Deploy to Local Acumatica
         run: npm run deploy:local
+        shell: pwsh
         env:
           AC_USERNAME: ${{ secrets.AC_USERNAME }}
           AC_PASSWORD: ${{ secrets.AC_PASSWORD }}
           AC_TENANT: ${{ vars.AC_TENANT }}
           AC_BRANCH: ${{ vars.AC_BRANCH }}
           AC_BASE_URL: ${{ vars.AC_BASE_URL }}
-          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          PROJECT_NAME: ${{ github.event.inputs.projectName }}
           PROJECT_DESCRIPTION: ${{ vars.PROJECT_DESCRIPTION }}
           PROJECT_LEVEL: ${{ vars.PROJECT_LEVEL }}
