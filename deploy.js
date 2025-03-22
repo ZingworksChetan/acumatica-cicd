@@ -140,7 +140,7 @@ async function checkPublishStatus(cookies) {
       let startTime = Date.now();
 
       while (!isCompleted && attempt < maxAttempts) {
-          const response = await axios.get(url, {
+          const response = await axios.post(url, {
               headers: {
                   'Content-Type': 'application/json',
                   'Cookie': cookies.join('; '),
