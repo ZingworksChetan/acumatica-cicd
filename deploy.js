@@ -180,41 +180,58 @@ async function checkPublishStatus(cookies) {
   }
 }
 
-
-async function importCustomization(cookies, projectName, projectDescription, projectLevel) {
-  // ✅ Corrected ZIP file path without extra [version]
-  const packagePath = path.resolve(`./build/${projectName}[${version}].zip`);
-
-  if (!fs.existsSync(packagePath)) {
-    console.error(`Error: File not found at path: ${packagePath}`);
-    return;
-  }
-
-  const packageContent = fs.readFileSync(packagePath, { encoding: 'base64' });
+async function checkPublishStatus(cookies) {
+  const url = `${base_url}/CustomizationApi/PublishEnd`; // ✅ Ensure URL is correct
 
   try {
-    const response = await axios.post(`${base_url}/CustomizationApi/import`, {
-      projectLevel,
-      isReplaceIfExists: true,
-      projectName,
-      projectDescription,
-      projectContentBase64: packageContent
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': cookies.join('; ')
-      }
-    });
+    let isCompleted = false;
+    let attempt = 0;
+    let maxAttempts = 38; // Max 38 attempts (~30 min timeout)
+    let delay = 120000; // Start with 2 min delay
+    let startTime = Date.now();
 
-    if (response.status === 200 || response.status === 204) {
-      console.log('Import successful!');
-    } else {
-      console.log('Import failed:', response.status, response.statusText);
+    while (!isCompleted && attempt < maxAttempts) {
+      // ✅ Change GET to POST
+      const response = await axios.post(url, {}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cookie': cookies.join('; '),
+        },
+      });
+
+      if (response.status === 200) {
+        isCompleted = response.data.isCompleted;
+        console.log(`[Attempt ${attempt + 1}] Publish Status: Completed=${isCompleted}, Failed=${response.data.isFailed}`);
+
+        if (isCompleted) {
+          let totalTime = Math.round((Date.now() - startTime) / 60000);
+          console.log(`Customization package published successfully in ${totalTime} minutes!`);
+          return true;
+        }
+      }
+
+      // Adjust delay to increase frequency over time
+      if (attempt >= 3 && attempt < 8) {
+        delay = 60000; // After 3 attempts (~5 min), poll every 1 minute
+      } else if (attempt >= 8 && attempt < 18) {
+        delay = 30000; // After 8 attempts (~10 min), poll every 30 sec
+      } else if (attempt >= 18) {
+        delay = 15000; // After 18 attempts (~15 min), poll every 15 sec
+      }
+
+      await new Promise(resolve => setTimeout(resolve, delay));
+      attempt++;
     }
+
+    console.error('Publishing timeout reached (30 min).');
+    return false;
+
   } catch (error) {
-    console.error('Error calling import:', error.message);
+    console.error('Error checking publish status:', error.response?.status, error.response?.data || error.message);
+    return false;
   }
 }
+
 
 async function acumaticaLogout(cookies) {
   if (!cookies || !Array.isArray(cookies) || cookies.length === 0) {
