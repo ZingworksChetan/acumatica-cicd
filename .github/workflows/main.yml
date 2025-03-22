@@ -53,9 +53,9 @@ jobs:
         run: npm run build:ci
         shell: pwsh
       
-      - name: 📂 List files in directory
-        run: dir /s /b  # Windows command equivalent of 'ls -lR'
-        shell: pwsh
+      # - name: 📂 List files in directory
+      #   run: dir /s /b  # Windows command equivalent of 'ls -lR'
+      #   shell: pwsh
       
       - name: 📦 Upload build artifact
         uses: actions/upload-artifact@v4
