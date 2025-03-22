@@ -38,8 +38,8 @@ async function loginToAcumatica() {
         throw new Error('Login succeeded but no cookies were received.');
       }
 
-      await importCustomization(cookies, `${projectName}[${version}]`, projectDescription, projectLevel);
-      const projectNames = await getPublished(cookies, `${projectName}[${version}]`);
+      await importCustomization(cookies, projectName, projectDescription, projectLevel);
+      const projectNames = await getPublished(cookies, projectName);
       
       if (projectNames) {
         await PublishBegin(cookies, projectNames);
@@ -182,7 +182,8 @@ async function checkPublishStatus(cookies) {
 
 
 async function importCustomization(cookies, projectName, projectDescription, projectLevel) {
-  const packagePath = path.resolve(`./build/${projectName}.zip`);
+  // ✅ Corrected ZIP file path without extra [version]
+  const packagePath = path.resolve(`./build/${projectName}[${version}].zip`);
 
   if (!fs.existsSync(packagePath)) {
     console.error(`Error: File not found at path: ${packagePath}`);
