@@ -232,6 +232,41 @@ async function checkPublishStatus(cookies) {
   }
 }
 
+async function importCustomization(cookies, projectName, projectDescription, projectLevel) {
+  // Corrected ZIP file path without extra [version]
+  const packagePath = path.resolve(`./build/${projectName}[${version}].zip`);
+
+  if (!fs.existsSync(packagePath)) {
+    console.error(`Error: File not found at path: ${packagePath}`);
+    return;
+  }
+
+  const packageContent = fs.readFileSync(packagePath, { encoding: 'base64' });
+
+  try {
+    const response = await axios.post(`${base_url}/CustomizationApi/import`, {
+      projectLevel,
+      isReplaceIfExists: true,
+      projectName,
+      projectDescription,
+      projectContentBase64: packageContent
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': cookies.join('; ')
+      }
+    });
+
+    if (response.status === 200 || response.status === 204) {
+      console.log('Import successful!');
+    } else {
+      console.log('Import failed:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Error calling import:', error.message);
+  }
+}
+
 
 async function acumaticaLogout(cookies) {
   if (!cookies || !Array.isArray(cookies) || cookies.length === 0) {
