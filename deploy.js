@@ -152,6 +152,11 @@ async function checkPublishStatus(cookies) {
         isCompleted = response.data.isCompleted;
         console.log(`[Attempt ${attempt + 1}] Publish Status: Completed=${isCompleted}, Failed=${response.data.isFailed}`);
 
+        if(response.data.isFailed){
+          console.error('Publish failed! Reason:', response.data.log[0]?.message || 'Unknown error');
+          process.exit(1);
+        }
+
         if (isCompleted) {
           let totalTime = Math.round((Date.now() - startTime) / 60000);
           console.log(`Customization package published successfully in ${totalTime} minutes!`);
@@ -173,11 +178,11 @@ async function checkPublishStatus(cookies) {
     }
 
     console.error('Publishing timeout reached (30 min).');
-    return false;
+    process.exit(1);
 
   } catch (error) {
     console.error('Error checking publish status:', error.response?.status, error.response?.data || error.message);
-    return false;
+    process.exit(1);
   }
 }
 
@@ -187,7 +192,7 @@ async function importCustomization(cookies, projectName, projectDescription, pro
 
   if (!fs.existsSync(packagePath)) {
     console.error(`Error: File not found at path: ${packagePath}`);
-    return;
+    process.exit(1);
   }
 
   const packageContent = fs.readFileSync(packagePath, { encoding: 'base64' });
@@ -210,9 +215,11 @@ async function importCustomization(cookies, projectName, projectDescription, pro
       console.log('Import successful!');
     } else {
       console.log('Import failed:', response.status, response.statusText);
+      process.exit(1);
     }
   } catch (error) {
     console.error('Error calling import:', error.message);
+    process.exit(1);
   }
 }
 
