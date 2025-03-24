@@ -188,7 +188,7 @@ async function checkPublishStatus(cookies) {
 
 async function importCustomization(cookies, projectName, projectDescription, projectLevel) {
   // Corrected ZIP file path without extra [version]
-  const packagePath = path.resolve(`./build/${projectName}[${version}].zip`);
+  const packagePath = path.resolve(`./build/${projectName}.zip`);
 
   if (!fs.existsSync(packagePath)) {
     console.error(`Error: File not found at path: ${packagePath}`);
