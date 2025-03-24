@@ -46,7 +46,7 @@ async function loginToAcumatica() {
         const isPublished = await checkPublishStatus(cookies);
 
         if (isPublished) {
-          console.log("------Build publish Finished-------")
+          console.log("------Build publish Successfully-------")
         } else {
           console.error('Publish failed or timed out.');
         }
@@ -126,57 +126,6 @@ async function PublishBegin(cookies, projectName) {
     }
   } catch (error) {
     console.error('Error calling PublishBegin:', error.message);
-  }
-}
-
-async function checkPublishStatus(cookies) {
-  const url = `${base_url}/CustomizationApi/PublishEnd`;
-
-  try {
-      let isCompleted = false;
-      let attempt = 0;
-      let maxAttempts = 38; // Max 38 attempts (~30 min timeout)
-      let delay = 120000; // Start with 2 min delay
-      let startTime = Date.now();
-
-      while (!isCompleted && attempt < maxAttempts) {
-          const response = await axios.post(url, {
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Cookie': cookies.join('; '),
-              },
-          });
-
-          if (response.status === 200) {
-              isCompleted = response.data.isCompleted;
-              console.log(`[Attempt ${attempt + 1}] Publish Status: Completed=${isCompleted}, Failed=${response.data.isFailed}`);
-
-              if (isCompleted) {
-                  let totalTime = Math.round((Date.now() - startTime) / 60000);
-                  console.log(`Customization package published successfully in ${totalTime} minutes!`);
-                  return true;
-              }
-          }
-
-          // Adjust delay to increase frequency over time
-          if (attempt >= 3 && attempt < 8) {
-              delay = 60000; // After 3 attempts (~5 min), poll every 1 minute
-          } else if (attempt >= 8 && attempt < 18) {
-              delay = 30000; // After 8 attempts (~10 min), poll every 30 sec
-          } else if (attempt >= 18) {
-              delay = 15000; // After 18 attempts (~15 min), poll every 15 sec
-          }
-
-          await new Promise(resolve => setTimeout(resolve, delay));
-          attempt++;
-      }
-
-      console.error('Publishing timeout reached (30 min).');
-      return false;
-
-  } catch (error) {
-      console.error('Error checking publish status:', error.message);
-      return false;
   }
 }
 
